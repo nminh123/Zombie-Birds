@@ -8,6 +8,7 @@ import com.zombiebrids.game.Zombirds;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+		config.setWindowedMode(1200,600);
 		config.setForegroundFPS(60);
 		config.setTitle("Zomebie-Brids");
 		new Lwjgl3Application(new Zombirds(), config);
