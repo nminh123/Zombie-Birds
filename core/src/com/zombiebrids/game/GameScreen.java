@@ -4,60 +4,64 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.zomebiebrids.gameworld.GameRenderer;
-import com.zomebiebrids.gameworld.GameWorld;
+import com.zombiebrids.gameworld.GameRenderer;
+import com.zombiebrids.gameworld.GameWorld;
+import com.zombiebrids.ZBHelpers.InputHandler;
 
-public class GameScreen implements Screen {
-
+public class GameScreen implements Screen
+{
     private GameWorld world;
     private GameRenderer renderer;
-    GameScreen()
-    {
-        Gdx.app.log("GameScreen", "Attached");
-        world = new GameWorld();
+
+    // This is the constructor, not the class declaration
+    public GameScreen() {
+
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        float gameWidth = 136;
+        float gameHeight = screenHeight / (screenWidth / gameWidth);
+
+        int midPointY = (int) (gameHeight / 2);
+
+        world = new GameWorld(midPointY);
         renderer = new GameRenderer(world);
-        OrthographicCamera camera = new OrthographicCamera();
-    }
-    @Override
-    public void show() {
-        Gdx.app.log("GameScreen","show called");
+
+        Gdx.input.setInputProcessor(new InputHandler(world.getBird()));
     }
 
     @Override
-    //render is update
     public void render(float delta) {
-        //Sets a Color to Fill the Screen with (RGB = 10, 15,230), Opacity of 1 (100%)
-        Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f,1f);
-        //Fills the screen with the selected color
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //Kiem tar FPS, xuat ra man hinh
-        Gdx.app.log("GameScreen FPS", (int)(1/delta) + "");
         world.update(delta);
         renderer.render();
     }
 
     @Override
     public void resize(int width, int height) {
-        Gdx.app.log("GameScreen","resizing");
+        System.out.println("GameScreen - resizing");
     }
 
     @Override
-    public void pause() {
-        Gdx.app.log("GameScreen","pause called");
-    }
-
-    @Override
-    public void resume() {
-        Gdx.app.log("GameScreen","resume called");
+    public void show() {
+        System.out.println("GameScreen - show called");
     }
 
     @Override
     public void hide() {
-        Gdx.app.log("GameScreen", "hide called");
+        System.out.println("GameScreen - hide called");
     }
 
     @Override
-    public void dispose() {
+    public void pause() {
+        System.out.println("GameScreen - pause called");
+    }
 
+    @Override
+    public void resume() {
+        System.out.println("GameScreen - resume called");
+    }
+
+    @Override
+    public void dispose()
+    {
     }
 }
