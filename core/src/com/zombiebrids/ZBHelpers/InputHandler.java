@@ -1,4 +1,5 @@
 package com.zombiebrids.ZBHelpers;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.zombiebrids.GameObjects.Bird;
 
@@ -24,6 +25,8 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
+        if(keycode == Input.Keys.W)
+            myBird.onClick();
         return false;
     }
 

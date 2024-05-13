@@ -21,7 +21,7 @@ public class AssetLoader {
         texture = new Texture(Gdx.files.internal("texture.png"));
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-        bg = new TextureRegion(texture, 0, 0, 136, 43);
+        bg = new TextureRegion(texture, 0, 0, 136, 80);
         bg.flip(false, true);
 
         grass = new TextureRegion(texture, 0, 43, 143, 11);
