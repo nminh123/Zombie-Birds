@@ -9,10 +9,10 @@ public class Scrollable {
     protected int height;
     protected boolean isScrolledLeft;
 
-    public Scrollable(float x, float y, int width, int height, float scrollingSpeed)
+    public Scrollable(float x, float y, int width, int height, float scrollSpeed)
     {
         position = new Vector2(x,y);
-        velocity = new Vector2(scrollingSpeed,0);
+        velocity = new Vector2(scrollSpeed,0);
         this.width = width;
         this.height = height;
         isScrolledLeft = false;
@@ -26,6 +26,17 @@ public class Scrollable {
         {
             isScrolledLeft = false;
         }
+    }
+
+    void reset(float newX)
+    {
+        position.x = newX;
+        isScrolledLeft = false;
+    }
+
+    void stop()
+    {
+        velocity.x = 0;
     }
 
     boolean isScrolledLeft()
@@ -56,11 +67,5 @@ public class Scrollable {
     public int getHeight()
     {
         return height;
-    }
-
-    public void reset(float newX)
-    {
-        position.x = newX;
-        isScrolledLeft = false;
     }
 }

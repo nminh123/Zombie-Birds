@@ -1,4 +1,6 @@
 package com.zombiebrids.GameObjects;
+
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bird {
@@ -6,7 +8,7 @@ public class Bird {
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
-
+    private Circle boundingCircle;
     private float rotation;
     private int width;
     private int height;
@@ -17,6 +19,7 @@ public class Bird {
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 460);
+        boundingCircle = new Circle();
     }
 
     public boolean isFalling()
@@ -32,11 +35,15 @@ public class Bird {
 
         velocity.add(acceleration.cpy().scl(delta));
 
-        if (velocity.y > 200) {
-            velocity.y = 200;
-        }
+//        if (velocity.y > 200) {
+//            velocity.y = 200;
+//        }
 
         position.add(velocity.cpy().scl(delta));
+
+        //Set the circle's center to be (9,6) with respect to the bird.
+        //Set the circle's radius tobe 6.5f
+        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
 
         //rotate counterclockwise
         if(velocity.y < 0)
@@ -81,5 +88,10 @@ public class Bird {
 
     public float getRotation() {
         return rotation;
+    }
+
+    public Circle getBoundingCircle()
+    {
+        return boundingCircle;
     }
 }

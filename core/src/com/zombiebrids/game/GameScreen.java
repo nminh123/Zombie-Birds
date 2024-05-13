@@ -35,6 +35,7 @@ public class GameScreen implements Screen
         runTime += delta;
         world.update(delta);
         renderer.render(runTime);
+        Gdx.app.log("GameScreen FPS", (int)(1/delta) + "");
     }
 
     @Override
