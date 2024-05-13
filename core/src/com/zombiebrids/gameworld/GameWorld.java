@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.zombiebrids.GameObjects.Bird;
 import com.zombiebrids.GameObjects.ScrollHandler;
+import com.zombiebrids.ZBHelpers.AssetLoader;
 
 public class GameWorld {
     private Bird bird;
     private ScrollHandler scroller;
+    public boolean isAlive = true;
 
     public GameWorld(int midPointY)
     {
@@ -19,10 +21,10 @@ public class GameWorld {
     public void update(float delta) {
         bird.update(delta);
         scroller.update(delta);
-        if(scroller.collides(bird))
-        {
-            //clean up on game over
+        if (isAlive && scroller.collides(bird)) {
             scroller.stop();
+            AssetLoader.Dead.play(3.0f);
+            isAlive = false;
         }
     }
 

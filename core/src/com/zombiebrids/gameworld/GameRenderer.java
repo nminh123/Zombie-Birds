@@ -174,7 +174,7 @@ public class GameRenderer {
         batcher.enableBlending();
         //Draw Skull
         drawSkulls();
-        //The bird nees transparency, so we enable that again.
+        //The bird need transparency, so we enable that again.
         batcher.enableBlending();
 
         if(bird.shouldntFlap())
