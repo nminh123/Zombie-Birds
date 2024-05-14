@@ -17,15 +17,17 @@ public class AssetLoader {
     public static TextureRegion bird, birdDown, birdUp;
 
     public static TextureRegion skullUp, skullDown, bar;
-    public static Sound Dead, Coin, Flap;
-    public static BitmapFont font;
+
+    public static Sound dead, flap, coin;
+
+    public static BitmapFont font, shadow;
 
     public static void load() {
 
         texture = new Texture(Gdx.files.internal("texture.png"));
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-        bg = new TextureRegion(texture, 0, 0, 136, 80);
+        bg = new TextureRegion(texture, 0, 0, 136, 43);
         bg.flip(false, true);
 
         grass = new TextureRegion(texture, 0, 43, 143, 11);
@@ -41,8 +43,8 @@ public class AssetLoader {
         birdUp.flip(false, true);
 
         TextureRegion[] birds = { birdDown, bird, birdUp };
-        birdAnimation = new Animation(0.06f, bird);
-        birdAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+        birdAnimation = new Animation(0.06f, birds);
+        //birdAnimation.setPlayMode(Animation.LOOP_PINGPONG);
 
         skullUp = new TextureRegion(texture, 192, 0, 24, 14);
         // Create by flipping existing skullUp
@@ -52,22 +54,27 @@ public class AssetLoader {
         bar = new TextureRegion(texture, 136, 16, 22, 3);
         bar.flip(false, true);
 
-        Dead = Gdx.audio.newSound(Gdx.files.internal("dead.wav"));
-        Coin = Gdx.audio.newSound(Gdx.files.internal("coin.wav"));
-        Flap = Gdx.audio.newSound((Gdx.files.internal("flap.wav")));
+        dead = Gdx.audio.newSound(Gdx.files.internal("dead.wav"));
+        flap = Gdx.audio.newSound(Gdx.files.internal("flap.wav"));
+        coin = Gdx.audio.newSound(Gdx.files.internal("coin.wav"));
 
-        //font = new BitmapFont(Gdx.files.internal("ka1.ttf"));
-        //font.getData().setScale(.25f,-.25f);
+        //font = new BitmapFont(Gdx.files.internal("data/text.fnt"));
+       // font.getData().setScale(.25f, -.25f);
+        //shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
+        //shadow.getData().setScale(.25f, -.25f);
 
     }
 
     public static void dispose() {
         // We must dispose of the texture when we are finished.
         texture.dispose();
-        Dead.dispose();
-        Flap.dispose();
-        Coin.dispose();
+
+        // Dispose sounds
+        dead.dispose();
+        flap.dispose();
+        coin.dispose();
 
         //font.dispose();
+        //shadow.dispose();
     }
 }

@@ -14,33 +14,14 @@ public class Zombirds extends Game
 	private OrthographicCamera hudCamera;
 	@Override
 	public void create() {
-		Gdx.app.log("ZomBirds", "Created");
+		System.out.println("ZBGame Created!");
 		AssetLoader.load();
 		setScreen(new GameScreen());
-
-		/*hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		hudCamera.position.set(hudCamera.viewportWidth / 2.0f, hudCamera.viewportHeight / 2.0f, 1.0f);*/
 	}
 
 	@Override
-	public void dispose()
-	{
-		AssetLoader.dispose();
+	public void dispose() {
 		super.dispose();
-	}
-
-	@Override
-	public void render() {
-		super.render();
-		/*hudCamera.update();
-		batch.setProjectionMatrix(hudCamera.combined);
-		batch.begin();
-		font.draw(batch, "Upper left, FPS=" + Gdx.graphics.getFramesPerSecond(), 0, hudCamera.viewportHeight);
-		batch.end();*/
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		super.resize(width, height);
+		AssetLoader.dispose();
 	}
 }

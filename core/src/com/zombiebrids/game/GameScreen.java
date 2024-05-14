@@ -10,13 +10,13 @@ import com.zombiebrids.gameworld.GameRenderer;
 import com.zombiebrids.gameworld.GameWorld;
 import com.zombiebrids.ZBHelpers.InputHandler;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.zombiebrids.gameworld.GameWorld;
 
 public class GameScreen implements Screen
 {
     private GameWorld world;
     private GameRenderer renderer;
     private float runTime;
-    private SpriteBatch batch;
 
     // This is the constructor, not the class declaration
     public GameScreen() {
@@ -32,6 +32,7 @@ public class GameScreen implements Screen
         renderer = new GameRenderer(world, (int) gameHeight, midPointY);
 
         Gdx.input.setInputProcessor(new InputHandler(world.getBird()));
+
     }
 
     @Override
@@ -39,7 +40,7 @@ public class GameScreen implements Screen
         runTime += delta;
         world.update(delta);
         renderer.render(runTime);
-        //Gdx.app.log("GameScreen FPS", (int)(1/delta) + "");
+        //Gdx.app.log("Score: ", String.valueOf(world.score));
     }
 
     @Override
