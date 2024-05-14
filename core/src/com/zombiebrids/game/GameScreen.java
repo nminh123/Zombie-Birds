@@ -4,15 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.zombiebrids.gameworld.GameRenderer;
 import com.zombiebrids.gameworld.GameWorld;
 import com.zombiebrids.ZBHelpers.InputHandler;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class GameScreen implements Screen
 {
     private GameWorld world;
     private GameRenderer renderer;
     private float runTime;
+    private SpriteBatch batch;
 
     // This is the constructor, not the class declaration
     public GameScreen() {
@@ -35,7 +39,7 @@ public class GameScreen implements Screen
         runTime += delta;
         world.update(delta);
         renderer.render(runTime);
-        Gdx.app.log("GameScreen FPS", (int)(1/delta) + "");
+        //Gdx.app.log("GameScreen FPS", (int)(1/delta) + "");
     }
 
     @Override

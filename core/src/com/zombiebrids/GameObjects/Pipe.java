@@ -12,6 +12,7 @@ public class Pipe extends Scrollable{
     public static final int SKULL_WIDTH = 24;
     public static final int SKULL_HEIGHT = 11;
     private float groundY;
+    private boolean isScored = false;
 
     //When Pipe's constructor invoked, invoke the super (Scrollable)
     //Constructor
@@ -32,8 +33,18 @@ public class Pipe extends Scrollable{
         super.reset(newX);
         //Change the height to a random number
         height = radius.nextInt(90) + 15;
+        isScored = false;
     }
 
+    public boolean isScored()
+    {
+        return isScored;
+    }
+
+    public void setScored(boolean b)
+    {
+        isScored = b;
+    }
     public void update(float delta)
     {
         //Call the update methods in the superclass(Scrollable)

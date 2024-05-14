@@ -3,6 +3,7 @@ package com.zombiebrids.ZBHelpers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.audio.Sound;
@@ -16,7 +17,8 @@ public class AssetLoader {
     public static TextureRegion bird, birdDown, birdUp;
 
     public static TextureRegion skullUp, skullDown, bar;
-    public static Sound Dead;
+    public static Sound Dead, Coin, Flap;
+    public static BitmapFont font;
 
     public static void load() {
 
@@ -51,10 +53,21 @@ public class AssetLoader {
         bar.flip(false, true);
 
         Dead = Gdx.audio.newSound(Gdx.files.internal("dead.wav"));
+        Coin = Gdx.audio.newSound(Gdx.files.internal("coin.wav"));
+        Flap = Gdx.audio.newSound((Gdx.files.internal("flap.wav")));
+
+        //font = new BitmapFont(Gdx.files.internal("ka1.ttf"));
+        //font.getData().setScale(.25f,-.25f);
+
     }
 
     public static void dispose() {
         // We must dispose of the texture when we are finished.
         texture.dispose();
+        Dead.dispose();
+        Flap.dispose();
+        Coin.dispose();
+
+        //font.dispose();
     }
 }

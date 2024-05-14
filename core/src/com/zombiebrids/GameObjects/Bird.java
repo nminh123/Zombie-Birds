@@ -2,6 +2,7 @@ package com.zombiebrids.GameObjects;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.zombiebrids.ZBHelpers.AssetLoader;
 
 public class Bird {
 
@@ -12,8 +13,10 @@ public class Bird {
     private float rotation;
     private int width;
     private int height;
+    private boolean isAlive;
 
     public Bird(float x, float y, int width, int height) {
+        isAlive = true;
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
@@ -29,7 +32,7 @@ public class Bird {
 
     public boolean shouldntFlap()
     {
-        return velocity.y > 70;
+        return velocity.y > 70 || !isAlive;
     }
     public void update(float delta) {
 
@@ -56,7 +59,7 @@ public class Bird {
         }
 
         //rotate clockwise
-        if(isFalling())
+        if(isFalling() || !isAlive)
         {
             rotation += 480 * delta;
             if(rotation > 90)
@@ -66,8 +69,25 @@ public class Bird {
         }
     }
 
+    private boolean isAlive()
+    {
+        return isAlive;
+    }
     public void onClick() {
         velocity.y = -140;
+        AssetLoader.Flap.play(4.0f);
+    }
+
+    public void die()
+    {
+        isAlive = false;
+        velocity.y = 0;
+    }
+
+    public void decelerate()
+    {
+        //We want the bird to stop accelerating downwards once it is dead.
+        acceleration.y = 0;
     }
 
     public float getX() {
