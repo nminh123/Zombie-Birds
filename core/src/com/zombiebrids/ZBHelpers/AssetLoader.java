@@ -58,11 +58,11 @@ public class AssetLoader {
         flap = Gdx.audio.newSound(Gdx.files.internal("flap.wav"));
         coin = Gdx.audio.newSound(Gdx.files.internal("coin.wav"));
 
-        //font = new BitmapFont(Gdx.files.internal("data/text.fnt"));
-       // font.getData().setScale(.25f, -.25f);
+        //font = new BitmapFont(Gdx.files.internal("ka1.ttf"), false);
+
+        //font.getData().setScale(.25f, -.25f);
         //shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
         //shadow.getData().setScale(.25f, -.25f);
-
     }
 
     public static void dispose() {

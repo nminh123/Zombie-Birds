@@ -9,9 +9,6 @@ import com.zombiebrids.ZBHelpers.AssetLoader;
 
 public class Zombirds extends Game
 {
-	private BitmapFont font;
-	private SpriteBatch batch;
-	private OrthographicCamera hudCamera;
 	@Override
 	public void create() {
 		System.out.println("ZBGame Created!");

@@ -1,8 +1,10 @@
 package com.zombiebrids.GameObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.zombiebrids.ZBHelpers.AssetLoader;
+import com.zombiebrids.gameworld.GameWorld;
 
 public class Bird {
 
@@ -40,7 +42,7 @@ public class Bird {
 
         // Set the circle's center to be (9, 6) with respect to the bird.
         // Set the circle's radius to be 6.5f;
-        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
+        boundingCircle.set(position.x + 9, position.y + 6, 6f);
 
         // Rotate counterclockwise
         if (velocity.y < 0) {
@@ -59,7 +61,6 @@ public class Bird {
             }
 
         }
-
     }
 
     public boolean isFalling() {
@@ -80,6 +81,7 @@ public class Bird {
     public void die() {
         isAlive = false;
         velocity.y = 0;
+        Gdx.app.log("Score:", String.valueOf(GameWorld.score));
     }
 
     public void decelerate() {

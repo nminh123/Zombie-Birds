@@ -20,7 +20,6 @@ public class GameRenderer {
     private GameWorld myWorld;
     private OrthographicCamera cam;
     private ShapeRenderer shapeRenderer;
-
     private SpriteBatch batcher;
 
     private int midPointY;
@@ -182,7 +181,6 @@ public class GameRenderer {
         // Draw text
         //AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
                 //- (3 * score.length() - 1), 11);
-
         batcher.end();
     }
 }
